@@ -1,0 +1,14 @@
+- name: Install PHP and Apache
+  ansible.builtin.include_tasks: 1_install_dependencies.yml
+
+- name: Install WordPress
+  ansible.builtin.include_tasks: 2_install_wp.yml
+
+- name: Create Apache site for WordPress
+  ansible.builtin.include_tasks: 3_configure_apache.yml
+
+- name: create MySQL database
+  ansible.builtin.include_tasks: 4_configure_database.yml
+
+- name: Connect WordPress with MySQL database
+  ansible.builtin.include_tasks: 5_connect_wp_db.yml  

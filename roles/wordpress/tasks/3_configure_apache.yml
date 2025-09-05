@@ -1,0 +1,33 @@
+- name: create wordpress.conf file
+  ansible.builtin.shell: |
+    tee /etc/apache2/sites-available/wordpress.conf <<END
+    <VirtualHost *:80>
+       DocumentRoot /srv/www/wordpress
+        <Directory /srv/www/wordpress>
+           Options FollowSymLinks
+           AllowOverride Limit Options FileInfo
+           DirectoryIndex index.php
+           Require all granted
+        </Directory>
+        <Directory /srv/www/wordpress/wp-content>
+            Options FollowSymLinks
+           Require all granted
+       </Directory>
+    </VirtualHost>
+    END
+
+- name: Enable the site
+  ansible.builtin.shell:
+    cmd: a2ensite wordpress
+
+- name: Enable URL rewriting
+  ansible.builtin.shell: 
+    cmd: a2enmod rewrite
+
+- name: Disable the default “It Works” site
+  ansible.builtin.shell:
+    cmd: a2dissite 000-default
+
+- name: Reload apache2
+  ansible.builtin.shell:
+    cmd: service apache2 reload
