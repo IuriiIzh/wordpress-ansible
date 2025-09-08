@@ -17,3 +17,13 @@
       - php-zip
     state: present
     update_cache: yes
+
+- name: Install pip
+  apt:
+    name: python3-pip
+    state: present
+
+- name: Install PyMySQL
+  pip:
+    name: pymysql
+    state: present
