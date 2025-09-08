@@ -7,5 +7,5 @@ tb
 tbd
 
 ## How to use it
-1. tbd
+1. Run ansible playbook: ansible-playbook -i inventory.ini site.yml -k
 
