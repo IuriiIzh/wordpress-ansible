@@ -15,15 +15,7 @@
       - php-mysql 
       - php-xml 
       - php-zip
+      - python3-mysqldb
     state: present
     update_cache: yes
 
-- name: Install pip
-  apt:
-    name: python3-pip
-    state: present
-
-- name: Install PyMySQL
-  pip:
-    name: python3-pymysql
-    state: present
