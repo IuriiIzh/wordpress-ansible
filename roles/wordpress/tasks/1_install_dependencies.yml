@@ -16,6 +16,7 @@
       - php-xml 
       - php-zip
       - python3-mysqldb
+      - dos2unix
     state: present
     update_cache: yes
 
