@@ -4,7 +4,7 @@
     cp /srv/www/wordpress/wp-config-sample.php /srv/www/wordpress/wp-config.php
     sed -i 's/database_name_here/wordpress/' /srv/www/wordpress/wp-config.php
     sed -i 's/username_here/wordpress/' /srv/www/wordpress/wp-config.php
-    sed -i 's/password_here/"{{db_pass}}"/' /srv/www/wordpress/wp-config.php
+    sed -i 's/password_here/{{db_pass}}/' /srv/www/wordpress/wp-config.php
     curl https://api.wordpress.org/secret-key/1.1/salt/ >> /tmp/keys.txt
     sed  -i -e '50r /tmp/keys.txt' -e '51,58d' /srv/www/wordpress/wp-config.php
     dos2unix /srv/www/wordpress/wp-config.php
