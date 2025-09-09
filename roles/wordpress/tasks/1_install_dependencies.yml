@@ -25,5 +25,5 @@
 
 - name: Install PyMySQL
   pip:
-    name: pymysql
+    name: python3-pymysql
     state: present

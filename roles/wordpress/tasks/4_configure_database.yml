@@ -13,11 +13,10 @@
   mysql_user:
     name: wordpress
     password: "{{db_pass}}"
-    priv: '*.*:ALL, SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER'
-    host: localhost
+    priv: '*.*:ALL'
     state: present
 
-
-- name: Enable MySQL
-  ansible.builtin.shell:
-    cmd: service mysql start
+- name: Restart mysql
+  service:
+    name: mysql
+    state: restarted
